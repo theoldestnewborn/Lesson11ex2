@@ -4,7 +4,7 @@ public class User {
     public String login, password, confirmPassword;
 
     public static boolean checkUser(String login, String password, String confirmPassword) {
-        if ((login.length() > 20 | login.contains(" ")) == true) {
+        if ((login.length() > 20 || login.contains(" "))) {
             try {
                 throw new WrongLoginException("Wrong login");
             } catch (WrongLoginException e) {
@@ -28,7 +28,7 @@ public class User {
                 return false;
             }
 
-        } else if (confirmPassword != password) {
+        } else if (!confirmPassword.equals(password)) {
             try {
                 throw new PasswordException("Wrong password");
             } catch (PasswordException e) {
